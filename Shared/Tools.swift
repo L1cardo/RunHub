@@ -5,8 +5,6 @@
 //  Created by Licardo on 2021/3/23.
 //
 
-import Alamofire
-import SwiftyJSON
 import SwiftDate
 import Defaults
 import SwiftSoup
@@ -83,64 +81,6 @@ extension Tools {
 
 // MARK: - activity 相关
 extension Tools {
-    func getActivities(callback: @escaping (_ activities: [Activity]) -> ()) {
-        var activities: [Activity] = []
-        let url = Defaults[.activitiesURL]
-        
-        AF.request(url, method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value).reversed()
-                
-                for (_, activity) in json {
-                    // 只添加今年的数据
-                    if Activity(from: activity).start_date_local.toDate()!.compare(.isSameYear(DateInRegion(region: .current))) {
-                        activities.append(Activity(from: activity))
-                    } else {
-                        break
-                    }
-                }
-                
-                callback(activities.reversed())
-            case .failure(let error):
-                //Defaults[.distances].removeAll()
-                print("HTTP Capture: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    func getDistance() {
-        var distances: [Double] = []
-        
-        getActivities { activities in
-            for i in 0..<DateInRegion(region: .current).dayOfYear {//1月1号至今的天数
-                distances.append(0.0)
-                
-                let date = DateInRegion(year: DateInRegion(region: .current).year, month: 1, day: 1) + i.days
-                for activity in activities {
-                    if activity.start_date_local.toDate()!.compare(.isSameDay(date)) {
-                        distances[i] += activity.distance
-                    }
-                }
-            }
-            
-            // 补齐1.1号之前的天数
-            if DateInRegion(year: DateInRegion(region: .current).year, month: 1, day: 1).weekday == 1 {
-                // 星期天(n=1)--补6次
-                for _ in 0..<6 {
-                    distances.insert(0.0, at: 0)
-                }
-            } else {
-                // 其他补n-2次
-                for _ in 0..<DateInRegion(year: DateInRegion(region: .current).year, month: 1, day: 1).weekday - 2 {
-                    distances.insert(0.0, at: 0)
-                }
-            }
-            
-            Defaults[.distances] = distances
-        }
-    }
-    
     func getDistanceFromSVG() {
         var svgDistances: [Double] = []
         guard !Defaults[.svgURL].isEmpty else { return }
