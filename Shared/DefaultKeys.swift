@@ -20,11 +20,15 @@ extension Defaults.Keys {
     
     static let activitiesURL = Key<String>("activitiesURL", default: "", suite: extensionDefaults)
     static let svgURL = Key<String>("svgURL", default: "", suite: extensionDefaults)
+    static let githubUsername = Key<String>("githubUsername", default: "", suite: extensionDefaults)
     static let distances = Key<[Double]>("distances", default: [], suite: extensionDefaults)
     static let svgDistances = Key<[Double]>("svgDistances", default: [], suite: extensionDefaults)
-    static let svgIsAscending = Key<Bool>("svgIsAscending", default: false, suite: extensionDefaults)
     static let colorStyle = Key<Int>("colorStyle", default: 0, suite: extensionDefaults)
+    static let urlType = Key<Int>("urlType", default: 0, suite: extensionDefaults)
     static let title = Key<String>("title", default: "", suite: extensionDefaults)
+    static let year = Key<String>("year", default: "", suite: extensionDefaults)
+    static let totalDistance = Key<String>("totalDistance", default: "", suite: extensionDefaults)
+    static let error = Key<String>("error", default: "", suite: extensionDefaults)
     
     static let greenMax = Key<String>("greenMax", default: "3", suite: extensionDefaults)
     static let blueMax = Key<String>("blueMax", default: "5", suite: extensionDefaults)

@@ -25,7 +25,7 @@ struct ColorRangeView: View {
                     .keyboardType(.decimalPad)
             }
             Spacer()
-            Text(color == .green || color == Color("GreenLevel1") ? "<" : "<=")
+            Text(color == .green || color == Color("GreenLevel1") ? "<" : "≤")
                 .frame(width: 50)
             Spacer()
             RoundedRectangle(cornerRadius: 2)

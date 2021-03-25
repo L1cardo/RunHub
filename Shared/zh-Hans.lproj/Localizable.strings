@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  RunHub
+
+  Created by Licardo on 2021/3/25.
+  
+*/
+
+// ActivityGridView
+"Please add a URL in preferences page" = "请在设置页面添加 URL";
+"Please check your SVG file URL" = "请检查您的 SVG 文件 URL";
+
+// PreferecesView
+"GitHub Repo" = "GitHub 仓库";
+"Custom URL" = "自定义 URL";
+"GitHub Username" = "GitHub 用户名";
+"Raw URL of 'github.svg'" = "'github.svg' 的原始链接";
+"Color" = "颜色";
+"Colorfull" = "彩色";
+"Green" = "绿色";
+"Preferences" = "偏好设置";
+"Done" = "完成";
+"BIG THANKS TO" = "非常感谢";
+"AND" = "与";
+"Help" = "帮助";
+
+// Help View
+"svgURLTip" = "由 running page 生成的 ’github.svg‘ 文件的原始链接。\n您可以在这里找到 ’/assets/github.svg‘。\nURL 可能看起来像这样 'https://raw.githubusercontent.com/L1cardo/running_page/master/assets/github.svg'。";

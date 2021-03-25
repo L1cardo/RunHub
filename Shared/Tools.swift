@@ -83,58 +83,30 @@ extension Tools {
 extension Tools {
     func getDistanceFromSVG() {
         var svgDistances: [Double] = []
-        guard !Defaults[.svgURL].isEmpty else { return }
-        let url = URL(string: Defaults[.svgURL])!
+        let urlString = Defaults[.urlType] == 0 ? "https://raw.githubusercontent.com/\(Defaults[.githubUsername])/running_page/master/assets/github.svg" : Defaults[.svgURL]
         
+        guard let url = URL(string: urlString) else {
+            Defaults[.error] = NSLocalizedString("Please check your SVG file URL", comment: "Please check your SVG file URL")
+            return
+        }
+
         do {
             let html = try String(contentsOf: url, encoding: .utf8)
             let document = try SwiftSoup.parse(html)
-            Defaults[.title] = try document.select("text").first()?.text() ?? ""
-            var svgDistancesArray = try document.select("rect").array()
+            Defaults[.title] = try document.select("text")[0].text()
+            Defaults[.year] = try document.select("text")[10].text()
+            Defaults[.totalDistance] = try document.select("text")[11].text().uppercased()
             
-            if Defaults[.svgIsAscending] { //svg文件的年份是升序
-                svgDistancesArray = svgDistancesArray.reversed()
-                for svgDistance in svgDistancesArray {
-                    let text = try svgDistance.text()
-                    
-                    if text.prefix(4) != DateInRegion(region: .current).toFormat("yyyy") {
-                        // 不是今年的数据时不要
-                        break
-                    } else {
-                        if !(text.toDate()?.compare(.isInTheFuture) ?? false) {
-                            if text.components(separatedBy: " ").count > 1 {
-                                let distance = Double(text.components(separatedBy: " ")[1])!
-                                svgDistances.insert(distance, at: 0)
-                            } else {
-                                svgDistances.insert(0.0, at: 0)
-                            }
-                        }
-                        
-                    }
-                }
-                svgDistancesArray = svgDistancesArray.reversed()
+            let svgDistancesArray = try document.select("rect").array()
+            for svgDistance in svgDistancesArray {
+                let text = try svgDistance.text()
                 
-                // 补齐1.1号之前的天数
-                if DateInRegion(year: DateInRegion(region: .current).year, month: 1, day: 1).weekday == 1 {
-                    // 星期天(n=1)--补6次
-                    for _ in 0..<6 {
-                        svgDistances.insert(0.0, at: 0)
-                    }
+                if svgDistances.count > 6 && text.prefix(4) != DateInRegion(region: .current).toFormat("yyyy") {
+                    // 数据>6且不是今年的数据时不要
+                    // >6是为了补齐1.1号之前上一年的数据, 如果1.1号时星期天，那么上一年的补齐数据为数6
+                    break
                 } else {
-                    // 其他补n-2次
-                    for _ in 0..<DateInRegion(year: DateInRegion(region: .current).year, month: 1, day: 1).weekday - 2 {
-                        svgDistances.insert(0.0, at: 0)
-                    }
-                }
-            } else { //svg文件的年份是降序
-                for svgDistance in svgDistancesArray {
-                    let text = try svgDistance.text()
-                    
-                    if svgDistances.count > 6 && text.prefix(4) != DateInRegion(region: .current).toFormat("yyyy") {
-                        // 数据>6且不是今年的数据时不要
-                        // >6是为了补齐1.1号之前上一年的数据, 如果1.1号时星期天，那么上一年的补齐数据为数6
-                        break
-                    } else {
+                    if !text.isEmpty {
                         if !(text.toDate()?.compare(.isInTheFuture) ?? false) {
                             if text.components(separatedBy: " ").count > 1 {
                                 let distance = Double(text.components(separatedBy: " ")[1])!
@@ -143,16 +115,15 @@ extension Tools {
                                 svgDistances.append(0.0)
                             }
                         }
-                        
                     }
                 }
-                
-                svgDistances.remove(at: 0) // 去除一个无效元素
             }
-
+                        
+            Defaults[.error] = ""
             Defaults[.svgDistances] = svgDistances
         } catch {
             print(error.localizedDescription)
+            Defaults[.error] = error.localizedDescription
         }
     }
 }

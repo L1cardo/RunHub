@@ -12,23 +12,34 @@ import Defaults
 struct ActivityGridView: View {
     var distances: [Double]
     @Default(.title) var title
+    @Default(.year) var year
+    @Default(.totalDistance) var totalDistance
+    @Default(.error) var error
     
     let weekdays = ["Mon", " ", "Wed", " ", "Fri", " ", "Sun"]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             if distances.count == 0 {
-                Text("Please add a URL in prefrences page")
-                    .foregroundColor(.secondary)
+                HStack {
+                    Text("Please add a URL in preferences page")
+                        .foregroundColor(.secondary)
+                    Spacer()
+                }
+            } else if error != "" {
+                HStack {
+                    Text(error)
+                        .foregroundColor(.red)
+                    Spacer()
+                }
             } else {
                 HStack {
                     Text(title)
                     Text(DateInRegion(region: .current).toFormat("yyyy"))
                     Spacer()
-                    Text(totalDistance())
+                    Text(totalDistance)
                 }
                 .foregroundColor(Color("SecondaryColor"))
-                .font(.caption2)
                 
                 LazyHGrid(rows: [
                     GridItem(.fixed(7)),
@@ -46,15 +57,16 @@ struct ActivityGridView: View {
                 }
             }
         }
+        .font(.caption2)
     }
     
-    private func totalDistance() -> String {
-        var totalDistance = 0.0
-        distances.forEach { (distance) in
-            totalDistance += distance
-        }
-        return "\(totalDistance.toKMString()) KM"
-    }
+//    private func totalDistance() -> String {
+//        var totalDistance = 0.0
+//        distances.forEach { (distance) in
+//            totalDistance += distance
+//        }
+//        return "\(totalDistance.toKMString()) KM"
+//    }
 }
 
 struct ActivityGridView_Previews: PreviewProvider {

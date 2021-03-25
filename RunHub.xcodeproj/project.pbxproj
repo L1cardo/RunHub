@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960142D1260C536000807CB0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 960142D5260C536000807CB0 /* Localizable.strings */; };
+		960142D2260C536000807CB0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 960142D5260C536000807CB0 /* Localizable.strings */; };
+		960142D3260C536000807CB0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 960142D5260C536000807CB0 /* Localizable.strings */; };
+		960142EE260C5AF200807CB0 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960142ED260C5AF200807CB0 /* HelpView.swift */; };
+		960142EF260C5AF200807CB0 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960142ED260C5AF200807CB0 /* HelpView.swift */; };
+		960142F0260C5AF200807CB0 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960142ED260C5AF200807CB0 /* HelpView.swift */; };
+		960142FE260C60B600807CB0 /* HelpViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960142FD260C60B600807CB0 /* HelpViewCell.swift */; };
+		960142FF260C60B600807CB0 /* HelpViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960142FD260C60B600807CB0 /* HelpViewCell.swift */; };
+		96014300260C60B600807CB0 /* HelpViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960142FD260C60B600807CB0 /* HelpViewCell.swift */; };
 		9639611C260A085C00A76EC6 /* ColorRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9639611B260A085C00A76EC6 /* ColorRangeView.swift */; };
 		9639611D260A085C00A76EC6 /* ColorRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9639611B260A085C00A76EC6 /* ColorRangeView.swift */; };
 		96396122260A1C2C00A76EC6 /* devices.json in Resources */ = {isa = PBXBuildFile; fileRef = 96396121260A1C2C00A76EC6 /* devices.json */; };
@@ -86,6 +95,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		960142C6260C534600807CB0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/iOSWidget.strings"; sourceTree = "<group>"; };
+		960142D4260C536000807CB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		960142D9260C536300807CB0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		960142ED260C5AF200807CB0 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		960142FD260C60B600807CB0 /* HelpViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewCell.swift; sourceTree = "<group>"; };
 		9639611B260A085C00A76EC6 /* ColorRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRangeView.swift; sourceTree = "<group>"; };
 		96396121260A1C2C00A76EC6 /* devices.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = devices.json; sourceTree = "<group>"; };
 		9639612A260A1C6300A76EC6 /* Devices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
@@ -153,6 +167,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		96014304260C611400807CB0 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				960142ED260C5AF200807CB0 /* HelpView.swift */,
+				960142FD260C60B600807CB0 /* HelpViewCell.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
 		96396130260A1C6800A76EC6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,13 +184,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		96D897C62609C6E9006E09BC /* Prefrences */ = {
+		96D897C62609C6E9006E09BC /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
 				96D897C12609C6C7006E09BC /* PreferencesView.swift */,
 				9639611B260A085C00A76EC6 /* ColorRangeView.swift */,
+				96014304260C611400807CB0 /* Help */,
 			);
-			path = Prefrences;
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 		96D897C92609C6F3006E09BC /* Extension */ = {
@@ -221,12 +245,13 @@
 				96E961E12608E8AE00479467 /* ContentView.swift */,
 				96E961E22608E8AF00479467 /* Assets.xcassets */,
 				96D897D22609C7B7006E09BC /* ActivityGridView */,
-				96D897C62609C6E9006E09BC /* Prefrences */,
+				96D897C62609C6E9006E09BC /* Preferences */,
 				96396130260A1C6800A76EC6 /* Models */,
 				96D897C92609C6F3006E09BC /* Extension */,
 				96396121260A1C2C00A76EC6 /* devices.json */,
 				96E962192608E93900479467 /* DefaultKeys.swift */,
 				96D898102609DA5D006E09BC /* Tools.swift */,
+				960142D5260C536000807CB0 /* Localizable.strings */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -365,6 +390,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 96E961DA2608E8AE00479467;
 			packageReferences = (
@@ -389,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9639614D260A207B00A76EC6 /* Assets.xcassets in Resources */,
+				960142D3260C536000807CB0 /* Localizable.strings in Resources */,
 				96D897E52609D570006E09BC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96E961F72608E8AF00479467 /* Assets.xcassets in Resources */,
+				960142D1260C536000807CB0 /* Localizable.strings in Resources */,
 				96396122260A1C2C00A76EC6 /* devices.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96E961F82608E8AF00479467 /* Assets.xcassets in Resources */,
+				960142D2260C536000807CB0 /* Localizable.strings in Resources */,
 				96396123260A1C2C00A76EC6 /* devices.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,12 +450,14 @@
 				96D897F72609D959006E09BC /* ActivityGrid.swift in Sources */,
 				9639613B260A1C8000A76EC6 /* Devices.swift in Sources */,
 				96DE0560260B4D0300C60600 /* SVGActivityGrid.swift in Sources */,
+				960142F0260C5AF200807CB0 /* HelpView.swift in Sources */,
 				96D898172609E0BC006E09BC /* Double+Extension.swift in Sources */,
 				9688EA59260A26D400355E76 /* iOSWidget.intentdefinition in Sources */,
 				96D8981B2609E50A006E09BC /* DefaultKeys.swift in Sources */,
 				96D897E22609D56E006E09BC /* iOSWidget.swift in Sources */,
 				96D897F32609D957006E09BC /* ActivityGridView.swift in Sources */,
 				96396137260A1C7C00A76EC6 /* Tools.swift in Sources */,
+				96014300260C60B600807CB0 /* HelpViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,9 +465,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				960142FE260C60B600807CB0 /* HelpViewCell.swift in Sources */,
 				96E961F52608E8AF00479467 /* ContentView.swift in Sources */,
 				96D897A42609914A006E09BC /* Color+Extension.swift in Sources */,
 				9639611C260A085C00A76EC6 /* ColorRangeView.swift in Sources */,
+				960142EE260C5AF200807CB0 /* HelpView.swift in Sources */,
 				96D897B02609C3C2006E09BC /* Double+Extension.swift in Sources */,
 				9688EA58260A26D400355E76 /* iOSWidget.intentdefinition in Sources */,
 				96E961F32608E8AF00479467 /* RunHubApp.swift in Sources */,
@@ -455,9 +488,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				96D898122609DA5D006E09BC /* Tools.swift in Sources */,
+				960142EF260C5AF200807CB0 /* HelpView.swift in Sources */,
 				96E961F62608E8AF00479467 /* ContentView.swift in Sources */,
 				9639612C260A1C6300A76EC6 /* Devices.swift in Sources */,
 				96DE055F260B4D0300C60600 /* SVGActivityGrid.swift in Sources */,
+				960142FF260C60B600807CB0 /* HelpViewCell.swift in Sources */,
 				96D897A52609914A006E09BC /* Color+Extension.swift in Sources */,
 				96D897B12609C3C2006E09BC /* Double+Extension.swift in Sources */,
 				96E961F42608E8AF00479467 /* RunHubApp.swift in Sources */,
@@ -480,11 +515,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		960142D5260C536000807CB0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				960142D4260C536000807CB0 /* en */,
+				960142D9260C536300807CB0 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		9688EA5B260A26D400355E76 /* iOSWidget.intentdefinition */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9688EA5A260A26D400355E76 /* Base */,
 				9688EA60260A26D500355E76 /* en */,
+				960142C6260C534600807CB0 /* zh-Hans */,
 			);
 			name = iOSWidget.intentdefinition;
 			sourceTree = "<group>";
@@ -499,7 +544,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = iOSWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				INFOPLIST_FILE = iOSWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
@@ -525,7 +570,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = iOSWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				INFOPLIST_FILE = iOSWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
@@ -549,6 +594,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -608,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -664,7 +711,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RunHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -690,7 +737,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RunHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -717,7 +764,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -743,7 +790,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
