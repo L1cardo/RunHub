@@ -13,27 +13,12 @@ struct ContentView: View {
     @Default(.distances) var distances
     @Default(.svgDistances) var svgDistances
     @State private var showPreferencesSheet = false
-    @State private var showProgressView = false
     
     var body: some View {
         NavigationView {
-            VStack {
-                if showProgressView {
-                    ProgressView()
-                } else {
-                    ActivityGridView(distances: svgDistances)
-                        .frame(height: 150)
-                        .padding()
-                }
-                Spacer()
-                
-//                List {
-//                    ForEach(self.activities.reversed(), id: \.run_id) { activity in
-//                        NavigationLink(destination: ActivityDetailView(activity: activity)) {
-//                            ActivityListCell(activity: activity)
-//                        }
-//                    }
-//                }
+            List {
+                ActivityGridView(distances: svgDistances)
+                    .padding(.vertical)
             }
             
             .navigationBarTitle("RunHub")
@@ -58,15 +43,6 @@ struct ContentView: View {
             Tools.shared.getDistanceFromSVG()
         }
     }
-    
-    
-    
-
-    
-    
-//    private func daysOfThisYear() -> Int {
-//        today.isLeapYear ? 366 : 365
-//    }
 }
 
 struct ContentView_Previews: PreviewProvider {

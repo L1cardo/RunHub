@@ -19,7 +19,7 @@ struct ActivityGridView: View {
     let weekdays = ["Mon", " ", "Wed", " ", "Fri", " ", "Sun"]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 10) {
             if distances.count == 0 {
                 HStack {
                     Text("Please add a URL in preferences page")
@@ -40,6 +40,9 @@ struct ActivityGridView: View {
                     Text(totalDistance)
                 }
                 .foregroundColor(Color("SecondaryColor"))
+                .textCase(.uppercase)
+                .font(.caption2)
+                .lineLimit(1)
                 
                 LazyHGrid(rows: [
                     GridItem(.fixed(7)),

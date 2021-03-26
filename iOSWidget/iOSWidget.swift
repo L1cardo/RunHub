@@ -24,12 +24,12 @@ struct Provider: IntentTimelineProvider {
         var entries: [SimpleEntry] = []
         
         let currentDate = Date()
-        let entryDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
+        //let entryDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
         
         //Tools.shared.getDistance()
         Tools.shared.getDistanceFromSVG()
         
-        let entry = SimpleEntry(date: entryDate, configuration: configuration, distances: Defaults[.svgDistances])
+        let entry = SimpleEntry(date: currentDate, configuration: configuration, distances: Defaults[.svgDistances])
         entries.append(entry)
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)

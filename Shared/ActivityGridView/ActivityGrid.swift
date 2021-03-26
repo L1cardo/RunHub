@@ -17,7 +17,7 @@ struct ActivityGrid: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 2)
-            .frame(width: 12, height: 12)
+            .frame(width: 12.5, height: 12.5)
             .foregroundColor(setCellColor(distance))
             .overlay(
                 RoundedRectangle(cornerRadius: 2)
@@ -29,11 +29,11 @@ struct ActivityGrid: View {
         switch distance {
         case _ where distance > 0 && distance < (Double(greenMax) ?? 3) * 1000:
             return .green
-        case _ where distance > (Double(greenMax) ?? 3) * 1000 && distance < (Double(blueMax) ?? 5) * 1000:
+        case _ where distance >= (Double(greenMax) ?? 3) * 1000 && distance < (Double(blueMax) ?? 5) * 1000:
             return .blue
-        case _ where distance > (Double(blueMax) ?? 5) * 1000 && distance < (Double(orangeMax) ?? 10) * 1000:
+        case _ where distance >= (Double(blueMax) ?? 5) * 1000 && distance < (Double(orangeMax) ?? 10) * 1000:
             return .orange
-        case _ where distance > (Double(orangeMax) ?? 10) * 1000 && distance < Double.infinity:
+        case _ where distance >= (Double(orangeMax) ?? 10) * 1000 && distance < Double.infinity:
             return .red
         default:
             return Color("GreyGridColor")

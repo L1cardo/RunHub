@@ -18,7 +18,7 @@ struct SVGActivityGrid: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 2)
-            .frame(width: 12, height: 12)
+            .frame(width: 12.5, height: 12.5)
             .foregroundColor(setCellColor(distance))
             .overlay(
                 RoundedRectangle(cornerRadius: 2)
@@ -30,11 +30,11 @@ struct SVGActivityGrid: View {
         switch distance {
         case _ where distance > 0 && distance < (Double(greenMax) ?? 3):
             return colorStyle == 0 ? .green : Color("GreenLevel1")
-        case _ where distance > (Double(greenMax) ?? 3) && distance < (Double(blueMax) ?? 5):
+        case _ where distance >= (Double(greenMax) ?? 3) && distance < (Double(blueMax) ?? 5):
             return colorStyle == 0 ? .blue : Color("GreenLevel2")
-        case _ where distance > (Double(blueMax) ?? 5) && distance < (Double(orangeMax) ?? 10):
+        case _ where distance >= (Double(blueMax) ?? 5) && distance < (Double(orangeMax) ?? 10):
             return colorStyle == 0 ? .orange : Color("GreenLevel3")
-        case _ where distance > (Double(orangeMax) ?? 10) && distance < Double.infinity:
+        case _ where distance >= (Double(orangeMax) ?? 10) && distance < Double.infinity:
             return colorStyle == 0 ? .red : Color("GreenLevel4")
         default:
             return Color.gray.opacity(0.2)

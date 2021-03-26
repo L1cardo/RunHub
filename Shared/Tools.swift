@@ -89,13 +89,13 @@ extension Tools {
             Defaults[.error] = NSLocalizedString("Please check your SVG file URL", comment: "Please check your SVG file URL")
             return
         }
-
+        
         do {
             let html = try String(contentsOf: url, encoding: .utf8)
             let document = try SwiftSoup.parse(html)
             Defaults[.title] = try document.select("text")[0].text()
             Defaults[.year] = try document.select("text")[10].text()
-            Defaults[.totalDistance] = try document.select("text")[11].text().uppercased()
+            Defaults[.totalDistance] = try document.select("text")[11].text()
             
             let svgDistancesArray = try document.select("rect").array()
             for svgDistance in svgDistancesArray {
@@ -118,9 +118,25 @@ extension Tools {
                     }
                 }
             }
-                        
+            
+            if svgDistances.count > 140 {
+                let remainder = svgDistances.count % 7
+                
+                if remainder == 0 {
+                    Defaults[.svgDistances] = svgDistances.reversed()[0..<140].reversed()
+                } else {
+                    var last: [Double] = []
+                    for _ in 0..<remainder {
+                        last.append(svgDistances.last!)
+                        svgDistances = svgDistances.dropLast()
+                    }
+                    Defaults[.svgDistances] = svgDistances.reversed()[0..<133].reversed() + last.reversed()
+                }
+            } else {
+                Defaults[.svgDistances] = svgDistances
+            }
+            
             Defaults[.error] = ""
-            Defaults[.svgDistances] = svgDistances
         } catch {
             print(error.localizedDescription)
             Defaults[.error] = error.localizedDescription
