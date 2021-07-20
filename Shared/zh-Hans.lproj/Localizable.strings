@@ -11,6 +11,7 @@
 "Please check your SVG file URL" = "请检查您的 SVG 文件 URL";
 
 // PreferecesView
+"Data Source" = "数据来源";
 "GitHub Repo" = "GitHub 仓库";
 "Custom URL" = "自定义 URL";
 "GitHub Username" = "GitHub 用户名";

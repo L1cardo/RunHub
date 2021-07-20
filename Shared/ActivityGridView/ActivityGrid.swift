@@ -43,6 +43,6 @@ struct ActivityGrid: View {
 
 struct ActivityCell_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityGrid(distance: 0)
+        ActivityGrid(distance: 4)
     }
 }

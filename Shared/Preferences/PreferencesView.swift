@@ -22,7 +22,7 @@ struct PreferencesView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("URL"),
+                Section(header: Text("Data Source"),
                         footer: HStack {
                             if urlType == 1 {
                                 Spacer()

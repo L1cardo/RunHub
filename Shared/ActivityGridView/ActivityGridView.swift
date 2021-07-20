@@ -40,9 +40,10 @@ struct ActivityGridView: View {
                     Text(totalDistance)
                 }
                 .foregroundColor(Color("SecondaryColor"))
+                //.foregroundColor(Color.init(hex: "#C6F820"))
                 .textCase(.uppercase)
-                .font(.caption2)
                 .lineLimit(1)
+                .font(.custom("Futura Extra Bold Condensed Oblique", size: 11))
                 
                 LazyHGrid(rows: [
                     GridItem(.fixed(7)),

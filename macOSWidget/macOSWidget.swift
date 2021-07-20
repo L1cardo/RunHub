@@ -1,8 +1,8 @@
 //
-//  iOSWidget.swift
-//  iOSWidget
+//  macOSWidget.swift
+//  macOSWidget
 //
-//  Created by Licardo on 2021/3/23.
+//  Created by Licardo on 2021/3/27.
 //
 
 import WidgetKit
@@ -29,7 +29,7 @@ struct Provider: IntentTimelineProvider {
         //Tools.shared.getDistance()
         Tools.shared.getDistanceFromSVG()
         
-        let entry = SimpleEntry(date: currentDate, configuration: configuration, distances: Defaults[.distancesFromSVG])
+        let entry = SimpleEntry(date: currentDate, configuration: configuration, distances: Defaults[.svgDistances])
         entries.append(entry)
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
@@ -42,7 +42,7 @@ struct SimpleEntry: TimelineEntry {
     let distances: [Double]
 }
 
-struct iOSWidgetEntryView : View {
+struct macOSWidgetEntryView : View {
     var entry: Provider.Entry
     
     var body: some View {
@@ -55,12 +55,12 @@ struct iOSWidgetEntryView : View {
 }
 
 @main
-struct iOSWidget: Widget {
+struct macOSWidget: Widget {
     let kind: String = "RunHubWidget"
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            iOSWidgetEntryView(entry: entry)
+            macOSWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("RunHub Widget")
         .description("Show your running activities.")
@@ -68,9 +68,9 @@ struct iOSWidget: Widget {
     }
 }
 
-struct iOSWidget_Previews: PreviewProvider {
+struct macOSWidget_Previews: PreviewProvider {
     static var previews: some View {
-        iOSWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), distances: []))
+        macOSWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), distances: []))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

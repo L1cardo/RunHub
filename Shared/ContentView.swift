@@ -10,23 +10,31 @@ import Defaults
 
 struct ContentView: View {
     
-    @Default(.distances) var distances
-    @Default(.svgDistances) var svgDistances
+    @Default(.distancesFromSVG) var distancesFromSVG
     @State private var showPreferencesSheet = false
+    @State private var isLoading = false
     
     var body: some View {
         NavigationView {
             List {
-                ActivityGridView(distances: svgDistances)
+                ActivityGridView(distances: distancesFromSVG)
                     .padding(.vertical)
             }
-            
             .navigationBarTitle("RunHub")
             .navigationBarItems(
+                leading: Button {
+                    Tools.shared.getDistanceFromSVG()
+                } label: {
+                    if isLoading {
+                        ProgressView()
+                    } else {
+                        Image(systemName: "arrow.counterclockwise.circle")
+                    }
+                }.disabled(isLoading),
                 trailing: Button {
                     showPreferencesSheet.toggle()
                 } label: {
-                    Image(systemName: "ellipsis")
+                    Image(systemName: "ellipsis.circle")
                 }
             )
         }
@@ -35,11 +43,10 @@ struct ContentView: View {
             PreferencesView()
         }
         .onAppear {
-            //Tools.shared.getDistance()
             Tools.shared.getDistanceFromSVG()
+            Tools.shared.getDistanceFromHealthKit()
         }
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("active"))) { _ in
-            //Tools.shared.getDistance()
             Tools.shared.getDistanceFromSVG()
         }
     }

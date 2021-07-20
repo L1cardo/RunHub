@@ -8,6 +8,7 @@
 import SwiftUI
 import WidgetKit
 
+#if os(iOS)
 @main
 struct RunHubApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
@@ -42,3 +43,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
+
+#elseif os(macOS)
+@main
+struct RunHubApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .frame(minWidth: 550, idealWidth: 550, minHeight: 550, idealHeight: 550)
+        }
+        .commands {
+            SidebarCommands()
+            ToolbarCommands()
+        }
+    }
+}
+
+class AppDelegate: NSResponder, NSApplicationDelegate {
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        NotificationCenter.default.post(Notification(name: Notification.Name("active")))
+        Tools.shared.getDeviceEnvironment()
+    }
+    
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
+}
+#endif
