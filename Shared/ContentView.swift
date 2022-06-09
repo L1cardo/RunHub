@@ -20,7 +20,6 @@ struct ContentView: View {
                 ActivityGridView(distances: svgDistances)
                     .padding(.vertical)
             }
-            
             .navigationBarTitle("RunHub")
             .navigationBarItems(
                 trailing: Button {

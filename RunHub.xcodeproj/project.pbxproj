@@ -41,7 +41,7 @@
 		96D897DF2609D56E006E09BC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D897DE2609D56E006E09BC /* SwiftUI.framework */; };
 		96D897E22609D56E006E09BC /* iOSWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D897E12609D56E006E09BC /* iOSWidget.swift */; };
 		96D897E52609D570006E09BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D897E42609D570006E09BC /* Assets.xcassets */; };
-		96D897EB2609D570006E09BC /* iOSWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 96D897DB2609D56E006E09BC /* iOSWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		96D897EB2609D570006E09BC /* iOSWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 96D897DB2609D56E006E09BC /* iOSWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96D897F32609D957006E09BC /* ActivityGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D897CC2609C7A2006E09BC /* ActivityGridView.swift */; };
 		96D897F72609D959006E09BC /* ActivityGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E962272608EBB100479467 /* ActivityGrid.swift */; };
 		96D8980A2609D98B006E09BC /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 96D898092609D98B006E09BC /* Defaults */; };
@@ -50,6 +50,8 @@
 		96D898122609DA5D006E09BC /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D898102609DA5D006E09BC /* Tools.swift */; };
 		96D898172609E0BC006E09BC /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D897AF2609C3C2006E09BC /* Double+Extension.swift */; };
 		96D8981B2609E50A006E09BC /* DefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E962192608E93900479467 /* DefaultKeys.swift */; };
+		96DB40CF2851811B00AA6A6C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 96DB40CE2851811B00AA6A6C /* Alamofire */; };
+		96DB40D12851873200AA6A6C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 96DB40D02851873200AA6A6C /* Alamofire */; };
 		96DE0559260B3E7100C60600 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 96DE0558260B3E7100C60600 /* SwiftSoup */; };
 		96DE055E260B4D0300C60600 /* SVGActivityGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE055D260B4D0300C60600 /* SVGActivityGrid.swift */; };
 		96DE055F260B4D0300C60600 /* SVGActivityGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE055D260B4D0300C60600 /* SVGActivityGrid.swift */; };
@@ -81,15 +83,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		96D897EF2609D570006E09BC /* Embed App Extensions */ = {
+		96D897EF2609D570006E09BC /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				96D897EB2609D570006E09BC /* iOSWidgetExtension.appex in Embed App Extensions */,
+				96D897EB2609D570006E09BC /* iOSWidgetExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -139,6 +141,7 @@
 				96D897DF2609D56E006E09BC /* SwiftUI.framework in Frameworks */,
 				96D8980C2609D98E006E09BC /* SwiftDate in Frameworks */,
 				96D897DD2609D56E006E09BC /* WidgetKit.framework in Frameworks */,
+				96DB40D12851873200AA6A6C /* Alamofire in Frameworks */,
 				96D8980A2609D98B006E09BC /* Defaults in Frameworks */,
 				96DE0559260B3E7100C60600 /* SwiftSoup in Frameworks */,
 			);
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96E962362608F2CC00479467 /* SwiftDate in Frameworks */,
+				96DB40CF2851811B00AA6A6C /* Alamofire in Frameworks */,
 				96E9620F2608E91400479467 /* Defaults in Frameworks */,
 				96D89797260988EC006E09BC /* SwiftSoup in Frameworks */,
 			);
@@ -312,6 +316,7 @@
 				96D898092609D98B006E09BC /* Defaults */,
 				96D8980B2609D98E006E09BC /* SwiftDate */,
 				96DE0558260B3E7100C60600 /* SwiftSoup */,
+				96DB40D02851873200AA6A6C /* Alamofire */,
 			);
 			productName = iOSWidgetExtension;
 			productReference = 96D897DB2609D56E006E09BC /* iOSWidgetExtension.appex */;
@@ -324,7 +329,7 @@
 				96E961E32608E8AF00479467 /* Sources */,
 				96E961E42608E8AF00479467 /* Frameworks */,
 				96E961E52608E8AF00479467 /* Resources */,
-				96D897EF2609D570006E09BC /* Embed App Extensions */,
+				96D897EF2609D570006E09BC /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -336,6 +341,7 @@
 				96E9620E2608E91400479467 /* Defaults */,
 				96E962352608F2CC00479467 /* SwiftDate */,
 				96D89796260988EC006E09BC /* SwiftSoup */,
+				96DB40CE2851811B00AA6A6C /* Alamofire */,
 			);
 			productName = "RunHub (iOS)";
 			productReference = 96E961E72608E8AF00479467 /* RunHub.app */;
@@ -370,7 +376,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					96D897DA2609D56E006E09BC = {
 						CreatedOnToolsVersion = 12.4;
@@ -397,6 +403,7 @@
 				96E9620D2608E91400479467 /* XCRemoteSwiftPackageReference "Defaults" */,
 				96E962342608F2CC00479467 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				96D89795260988EC006E09BC /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				96DB40CD2851811B00AA6A6C /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 96E961E82608E8AF00479467 /* Products */;
 			projectDirPath = "";
@@ -544,16 +551,16 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = iOSWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				INFOPLIST_FILE = iOSWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.licardo.RunHub.iOSWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -570,16 +577,16 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = iOSWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				INFOPLIST_FILE = iOSWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.licardo.RunHub.iOSWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -625,6 +632,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -642,6 +650,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -685,6 +695,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -696,6 +707,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -711,16 +724,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RunHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.licardo.RunHub;
 				PRODUCT_NAME = RunHub;
 				SDKROOT = iphoneos;
@@ -737,16 +751,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RunHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.licardo.RunHub;
 				PRODUCT_NAME = RunHub;
 				SDKROOT = iphoneos;
@@ -762,19 +777,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.licardo.RunHub;
 				PRODUCT_NAME = RunHub;
 				SDKROOT = macosx;
@@ -788,19 +806,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.licardo.RunHub;
 				PRODUCT_NAME = RunHub;
 				SDKROOT = macosx;
@@ -858,12 +879,20 @@
 				minimumVersion = 2.3.2;
 			};
 		};
+		96DB40CD2851811B00AA6A6C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		96E9620D2608E91400479467 /* XCRemoteSwiftPackageReference "Defaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.1;
+				minimumVersion = 6.0.0;
 			};
 		};
 		96E962342608F2CC00479467 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
@@ -896,6 +925,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 96E962342608F2CC00479467 /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDate;
+		};
+		96DB40CE2851811B00AA6A6C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96DB40CD2851811B00AA6A6C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		96DB40D02851873200AA6A6C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96DB40CD2851811B00AA6A6C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		96DE0558260B3E7100C60600 /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;

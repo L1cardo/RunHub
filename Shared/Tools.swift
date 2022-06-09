@@ -8,6 +8,7 @@
 import SwiftDate
 import Defaults
 import SwiftSoup
+import Alamofire
 #if os(iOS)
 import UIKit
 #else
@@ -27,16 +28,16 @@ extension Tools {
     
     // 设备信息
     func getDeviceInfo() {
-        #if os(iOS)
+#if os(iOS)
         Defaults[.systemVersion] = UIDevice.current.systemVersion // 系统版本
         Defaults[.systemName] = UIDevice.current.systemName // 系统名称
         
-        #else
+#else
         let os = ProcessInfo.processInfo.operatingSystemVersion
         Defaults[.systemVersion] = "\(os.majorVersion).\(os.minorVersion).\(os.patchVersion)"
         Defaults[.systemName] = "macOS"
         
-        #endif
+#endif
         
         let model = modelIdentifier()
         
@@ -56,7 +57,7 @@ extension Tools {
     }
     
     func modelIdentifier() -> String {
-        #if os(iOS)
+#if os(iOS)
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
@@ -66,7 +67,7 @@ extension Tools {
         }
         return modelIdentifier
         
-        #else
+#else
         var modelIdentifier: String?
         let service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
         if let modelData = IORegistryEntryCreateCFProperty(service, "model" as CFString, kCFAllocatorDefault, 0).takeRetainedValue() as? Data {
@@ -75,7 +76,7 @@ extension Tools {
         IOObjectRelease(service)
         return modelIdentifier ?? "Mac"
         
-        #endif
+#endif
     }
 }
 
@@ -84,62 +85,70 @@ extension Tools {
     func getDistanceFromSVG() {
         var svgDistances: [Double] = []
         let urlString = Defaults[.urlType] == 0 ? "https://raw.githubusercontent.com/\(Defaults[.githubUsername])/running_page/master/assets/github.svg" : Defaults[.svgURL]
-        
         guard let url = URL(string: urlString) else {
             Defaults[.error] = NSLocalizedString("Please check your SVG file URL", comment: "Please check your SVG file URL")
             return
         }
         
-        do {
-            let html = try String(contentsOf: url, encoding: .utf8)
-            let document = try SwiftSoup.parse(html)
-            Defaults[.title] = try document.select("text")[0].text()
-            Defaults[.year] = try document.select("text")[10].text()
-            Defaults[.totalDistance] = try document.select("text")[11].text()
-            
-            let svgDistancesArray = try document.select("rect").array()
-            for svgDistance in svgDistancesArray {
-                let text = try svgDistance.text()
-                
-                if svgDistances.count > 6 && text.prefix(4) != DateInRegion(region: .current).toFormat("yyyy") {
-                    // 数据>6且不是今年的数据时不要
-                    // >6是为了补齐1.1号之前上一年的数据, 如果1.1号时星期天，那么上一年的补齐数据为数6
-                    break
-                } else {
-                    if !text.isEmpty {
-                        if !(text.toDate()?.compare(.isInTheFuture) ?? false) {
-                            if text.components(separatedBy: " ").count > 1 {
-                                let distance = Double(text.components(separatedBy: " ")[1])!
-                                svgDistances.append(distance)
-                            } else {
-                                svgDistances.append(0.0)
+        AF.request(url.absoluteString).validate().responseString { response in
+            switch response.result {
+            case let .success(value):
+                do {
+                    let document = try SwiftSoup.parse(value)
+                    Defaults[.title] = try document.select("text")[0].text()
+                    Defaults[.year] = try document.select("text")[10].text()
+                    Defaults[.totalDistance] = try document.select("text")[11].text()
+                    
+                    let svgDistancesArray = try document.select("rect").array()
+                    for svgDistance in svgDistancesArray {
+                        let text = try svgDistance.text()
+                        
+                        if svgDistances.count > 6 && text.prefix(4) != DateInRegion(region: .current).toFormat("yyyy") {
+                            // 数据>6且不是今年的数据时不要
+                            // >6是为了补齐1.1号之前上一年的数据, 如果1.1号时星期天，那么上一年的补齐数据为数6
+                            break
+                        } else {
+                            if !text.isEmpty {
+                                if !(text.toDate()?.compare(.isInTheFuture) ?? false) {
+                                    if text.components(separatedBy: " ").count > 1 {
+                                        let distance = Double(text.components(separatedBy: " ")[1])!
+                                        svgDistances.append(distance)
+                                    } else {
+                                        svgDistances.append(0.0)
+                                    }
+                                }
                             }
                         }
                     }
-                }
-            }
-            
-            if svgDistances.count > 140 {
-                let remainder = svgDistances.count % 7
-                
-                if remainder == 0 {
-                    Defaults[.svgDistances] = svgDistances.reversed()[0..<140].reversed()
-                } else {
-                    var last: [Double] = []
-                    for _ in 0..<remainder {
-                        last.append(svgDistances.last!)
-                        svgDistances = svgDistances.dropLast()
+                    
+                    if svgDistances.count > 140 {
+                        let remainder = svgDistances.count % 7
+                        
+                        if remainder == 0 {
+                            Defaults[.svgDistances] = svgDistances.reversed()[0..<140].reversed()
+                        } else {
+                            var last: [Double] = []
+                            for _ in 0..<remainder {
+                                last.append(svgDistances.last!)
+                                svgDistances = svgDistances.dropLast()
+                            }
+                            Defaults[.svgDistances] = (svgDistances.reversed()[0..<133].reversed()) + last.reversed()
+                        }
+                    } else {
+                        Defaults[.svgDistances] = svgDistances
                     }
-                    Defaults[.svgDistances] = svgDistances.reversed()[0..<133].reversed() + last.reversed()
+                    
+                    Defaults[.error] = ""
                 }
-            } else {
-                Defaults[.svgDistances] = svgDistances
+                
+                catch {
+                    print(error.localizedDescription)
+                    Defaults[.error] = error.localizedDescription
+                }
+            case let .failure(error):
+                print(error.localizedDescription)
+                Defaults[.error] = error.localizedDescription
             }
-            
-            Defaults[.error] = ""
-        } catch {
-            print(error.localizedDescription)
-            Defaults[.error] = error.localizedDescription
         }
     }
 }

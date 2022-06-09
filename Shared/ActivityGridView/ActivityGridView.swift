@@ -16,8 +16,6 @@ struct ActivityGridView: View {
     @Default(.totalDistance) var totalDistance
     @Default(.error) var error
     
-    let weekdays = ["Mon", " ", "Wed", " ", "Fri", " ", "Sun"]
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             if distances.count == 0 {
@@ -26,7 +24,7 @@ struct ActivityGridView: View {
                         .foregroundColor(.secondary)
                     Spacer()
                 }
-            } else if error != "" {
+            } else if error != "" && distances.count == 0 {
                 HStack {
                     Text(error)
                         .foregroundColor(.red)
@@ -63,13 +61,13 @@ struct ActivityGridView: View {
         .font(.caption2)
     }
     
-//    private func totalDistance() -> String {
-//        var totalDistance = 0.0
-//        distances.forEach { (distance) in
-//            totalDistance += distance
-//        }
-//        return "\(totalDistance.toKMString()) KM"
-//    }
+    //    private func totalDistance() -> String {
+    //        var totalDistance = 0.0
+    //        distances.forEach { (distance) in
+    //            totalDistance += distance
+    //        }
+    //        return "\(totalDistance.toKMString()) KM"
+    //    }
 }
 
 struct ActivityGridView_Previews: PreviewProvider {

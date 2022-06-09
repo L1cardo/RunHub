@@ -1,34 +1,41 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Defaults",
-        "repositoryURL": "https://github.com/sindresorhus/Defaults",
-        "state": {
-          "branch": null,
-          "revision": "63dcea312f9cbd17064294a3ae99c9147704b65f",
-          "version": "4.2.1"
-        }
-      },
-      {
-        "package": "SwiftDate",
-        "repositoryURL": "https://github.com/malcommac/SwiftDate",
-        "state": {
-          "branch": null,
-          "revision": "6190d0cefff3013e77ed567e6b074f324e5c5bf5",
-          "version": "6.3.1"
-        }
-      },
-      {
-        "package": "SwiftSoup",
-        "repositoryURL": "https://github.com/scinfu/SwiftSoup",
-        "state": {
-          "branch": null,
-          "revision": "774dc9c7213085db8aa59595e27c1cd22e428904",
-          "version": "2.3.2"
-        }
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire",
+      "state" : {
+        "revision" : "354dda32d89fc8cd4f5c46487f64957d355f53d8",
+        "version" : "5.6.1"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "defaults",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/Defaults",
+      "state" : {
+        "revision" : "119f654d44f7b90f00dc11f7dd1c94a36f12576b",
+        "version" : "6.2.1"
+      }
+    },
+    {
+      "identity" : "swiftdate",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/malcommac/SwiftDate",
+      "state" : {
+        "revision" : "6190d0cefff3013e77ed567e6b074f324e5c5bf5",
+        "version" : "6.3.1"
+      }
+    },
+    {
+      "identity" : "swiftsoup",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scinfu/SwiftSoup",
+      "state" : {
+        "revision" : "6778575285177365cbad3e5b8a72f2a20583cfec",
+        "version" : "2.4.3"
+      }
+    }
+  ],
+  "version" : 2
 }
